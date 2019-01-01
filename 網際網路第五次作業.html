@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>王國紀元加速計算器</title>
+</head>
+<body>
+	<p>王國紀元加速計算器</p>
+	<form>加速1分鐘: <input type="number" id="1m"></form>
+	<form>加速3分鐘: <input type="number" id="3m"></form>
+	<form>加速5分鐘: <input type="number" id="5m"></form>
+	<form>加速10分鐘: <input type="number" id="10m"></form>
+	<form>加速15分鐘: <input type="number" id="15m"></form>
+	<form>加速30分鐘: <input type="number" id="30m"></form>
+	<form>加速1小時: <input type="number" id="1h"></form>
+	<form>加速3小時: <input type="number" id="3h"></form>
+	<form>加速8小時: <input type="number" id="8h"></form>
+	<form>加速15小時: <input type="number" id="15h"></form>
+	<form>加速1天: <input type="number" id="1d"></form>
+	<form>加速3天: <input type="number" id="3d"></form>
+	<form>研發加速5分鐘: <input type="number" id="5m_rs"></form>
+	<form>研發加速10分鐘: <input type="number" id="10m_rs"></form>
+	<form>研發加速15分鐘: <input type="number" id="15m_rs"></form>
+	<form>研發加速30分鐘: <input type="number" id="30m_rs"></form>
+	<form>研發加速1小時: <input type="number" id="1h_rs"></form>
+	<form>研發加速3小時: <input type="number" id="3h_rs"></form>
+	<form>研發加速8小時: <input type="number" id="8h_rs"></form>
+	<form>研發加速15小時: <input type="number" id="15h_rs"></form>
+	<form>研發加速1天: <input type="number" id="1d_rs"></form>
+	<form>研發加速3天: <input type="number" id="3d_rs"></form>
+	<p id="time"></p>
+	<button type="button" onclick="cal()">計算加速時間</button>
+	<script>
+		function cal(){
+			var one_m = document.getElementById("1m").value;
+			var three_m = document.getElementById("3m").value;
+			var five_m = document.getElementById("5m").value;
+			var ten_m = document.getElementById("10m").value;
+			var fifteen_m = document.getElementById("15m").value;
+			var thirty_m = document.getElementById("30m").value;
+			var one_h = document.getElementById("1h").value;
+			var three_h = document.getElementById("3h").value;
+			var eight_h = document.getElementById("8h").value;
+			var fifteen_h = document.getElementById("15h").value;
+			var one_d = document.getElementById("1d").value;
+			var three_d = document.getElementById("3d").value;
+			var total_nm = parseInt(one_m)+parseInt(three_m)*3+parseInt(five_m)*5+parseInt(ten_m)*10+parseInt(fifteen_m)*15+parseInt(thirty_m)*30+parseInt(one_h)*60+parseInt(three_h)*180+parseInt(eight_h)*480+parseInt(fifteen_h)*900+parseInt(one_d)*1440+parseInt(three_d)*4320;
+			var total_nm_m = total_nm%60;
+			var total_nm_h = parseInt(total_nm/60)%24;
+			var total_nm_d = parseInt(total_nm/60/24);
+			var five_m_rs = document.getElementById("5m_rs").value;
+			var ten_m_rs = document.getElementById("10m_rs").value;
+			var fifteen_m_rs = document.getElementById("15m_rs").value;
+			var thirty_m_rs = document.getElementById("30m_rs").value;
+			var one_h_rs = document.getElementById("1h_rs").value;
+			var three_h_rs = document.getElementById("3h_rs").value;
+			var eight_h_rs = document.getElementById("8h_rs").value;
+			var fifteen_h_rs = document.getElementById("15h_rs").value;
+			var one_d_rs = document.getElementById("1d_rs").value;
+			var three_d_rs = document.getElementById("3d_rs").value;
+			var total_rs = parseInt(five_m_rs)*5+parseInt(ten_m_rs)*10+parseInt(fifteen_m_rs)*15+parseInt(thirty_m_rs)*30+parseInt(one_h_rs)*60+parseInt(three_h_rs)*180+parseInt(eight_h_rs)*480+parseInt(fifteen_h_rs)*900+parseInt(one_d_rs)*1440+parseInt(three_d_rs)*4320;
+			var total_rs_m = total_rs%60;
+			var total_rs_h = parseInt(total_rs/60)%24;
+			var total_rs_d = parseInt(total_rs/60/24);
+			var total_total = total_nm+total_rs;
+			var total_total_m = total_total%60;
+			var total_total_h = parseInt(total_total/60)%24;
+			var total_total_d = parseInt(total_total/60/24);
+			document.getElementById("time").innerHTML = 
+			"加速: "+total_nm_d+"天"+total_nm_h+"小時"+total_nm_m+"分鐘"+" & "+
+			"研發加速: "+total_rs_d+"天"+total_rs_h+"小時"+total_rs_m+"分鐘"+" & "+
+			"總加速: "+total_total_d+"天"+total_total_h+"小時"+total_total_m+"分鐘";
+		}
+	</script>
+</body>
+</html>
